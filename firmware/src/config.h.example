@@ -1,0 +1,44 @@
+/**
+ * ESP32 CO2 Drift Compensator - 配置文件模板
+ * 
+ * 使用前请复制为 config.h 并填入实际配置
+ */
+
+#ifndef CONFIG_H
+#define CONFIG_H
+
+// ==================== WiFi 配置 ====================
+// 支持多热点自动切换，至少配置一个
+#define WIFI_SSID_1 "YourWiFi_1"
+#define WIFI_PASS_1 "password1"
+
+// 可选：额外WiFi热点
+// #define WIFI_SSID_2 "YourWiFi_2"
+// #define WIFI_PASS_2 "password2"
+
+// #define WIFI_SSID_3 "YourWiFi_3"
+// #define WIFI_PASS_3 "password3"
+
+// ==================== 服务器配置 ====================
+#define SERVER_URL "https://your-server.com/co2/sensor_data.php"
+
+// ==================== 气泵配置 ====================
+// 闭环气路专用配置
+#define PUMP_DUTY_MEASURE 120   // 测量采样时的PWM力度 (0-255)
+#define PUMP_DUTY_VENT    150   // 通风功能的PWM力度
+#define PUMP_TIME_MEASURE 25    // 测量采样时间 (秒，闭环建议长一点确保置换)
+#define PUMP_TIME_VENT    50    // 单独通风时间 (秒)
+
+// ==================== 传感器配置 ====================
+#define SENSOR_STABILIZE_TIME 20  // 关泵后静置等待气压平衡的时间 (秒)
+
+// ==================== 测量间隔 ====================
+// 固定600秒 = 10分钟，与时间整点对齐
+#define INTERVAL_SECONDS 600
+
+// ==================== NTP 时间服务器 ====================
+#define NTP_SERVER1 "ntp1.aliyun.com"
+#define NTP_SERVER2 "pool.ntp.org"
+#define GMT_OFFSET_SEC (8 * 3600)  // UTC+8 北京时间
+
+#endif

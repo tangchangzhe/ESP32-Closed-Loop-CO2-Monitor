@@ -1,0 +1,17 @@
+# PlatformIO
+firmware/.pio/
+firmware/.vscode/
+
+# Config files with sensitive data
+firmware/src/config.h
+web/config.php
+
+# IDE
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
