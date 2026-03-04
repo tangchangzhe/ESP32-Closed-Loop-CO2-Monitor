@@ -1,8 +1,8 @@
-# ESP32 CO2 Drift Compensator
+# ESP32 Sealed Chamber CO2 Monitor with Drift Compensation
 
-[中文文档](README_CN.md)
+[Chinese](README_CN.md)
 
-A pump-based closed-loop CO2 monitoring system with built-in software drift compensation algorithm for low-cost sealed chamber applications.
+A pump-based closed-loop CO2 monitoring system for small sealed chambers, featuring built-in software drift compensation algorithm for low-cost applications.
 
 ## Demo
 
