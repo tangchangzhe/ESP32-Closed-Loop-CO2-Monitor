@@ -184,7 +184,7 @@ esp32-co2-drift-compensator/
 
 ## Use Cases
 
-This project was originally developed for monitoring algae respiration in sealed chambers, but the drift compensation algorithm is applicable to any scenario with:
+This project was originally developed for monitoring algae respiration in sealed chambers, but some ideas of this project is applicable to any scenario with:
 
 - Poor gas circuit sealing
 - Long-term continuous CO2 monitoring needs
