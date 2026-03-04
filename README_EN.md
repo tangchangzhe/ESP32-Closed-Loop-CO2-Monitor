@@ -2,7 +2,7 @@
 
 [中文文档](README.md)
 
-A pump-based closed-loop CO2 monitoring system designed for sealed chambers (e.g., microbial culture vessels), featuring a multi-anchor drift compensation algorithm to address gas leakage issues inherent in low-cost sealed setups.
+An ESP32-based closed-loop pump-driven CO2 monitoring system for sealed chambers (e.g., microbial culture vessels), featuring a multi-anchor drift compensation algorithm to address data drift caused by inadequate gas-tightness in low-cost setups.
 
 ## Demo
 
