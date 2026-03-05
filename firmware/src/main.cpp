@@ -48,6 +48,7 @@ uint16_t readZG09SR();
 void controlPump(bool on, int duty);
 time_t getNextAlignedEpoch();
 bool isTimeSynced();
+void syncNTPTime();
 
 // ==================== 初始化 ====================
 void setup() {
@@ -115,6 +116,10 @@ void loop() {
         if (now >= nextScheduleTime) {
             Serial.println("\n>>> 自动任务触发 <<<");
             executeMeasurementLogic(nextScheduleTime, true);
+            
+            // 每次测量完成后重新同步NTP时间，纠正RTC累积漂移
+            syncNTPTime();
+            
             nextScheduleTime = getNextAlignedEpoch();
             printSystemCheck();
         }
@@ -304,6 +309,20 @@ time_t getNextAlignedEpoch() {
     time_t next = (now / INTERVAL_SECONDS + 1) * INTERVAL_SECONDS;
     if (next - now < 10) next += INTERVAL_SECONDS;
     return next;
+}
+
+// ==================== NTP时间同步 ====================
+void syncNTPTime() {
+    if (checkNetwork()) {
+        Serial.print("   [NTP] 正在同步时间... ");
+        configTime(GMT_OFFSET_SEC, 0, NTP_SERVER1, NTP_SERVER2);
+        struct tm t;
+        if (getLocalTime(&t, 3000)) {
+            Serial.printf("成功 (%02d:%02d:%02d)\n", t.tm_hour, t.tm_min, t.tm_sec);
+        } else {
+            Serial.println("超时");
+        }
+    }
 }
 
 // ==================== 辅助函数 ====================
